@@ -7,7 +7,6 @@ html {
 }
 
 .welcome-card {
-    width: 350px;
     background: #f39c12;
     position: relative;
     padding: 10px;
@@ -15,7 +14,14 @@ html {
     -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 5px;
+}
 
+.welcome-width {
+    width: 350px;
+}
+
+.rented-movies {
+    width: 600px;
 }
 
 .brand_logo_container {
@@ -64,4 +70,12 @@ html {
 
 .w-40 {
     width: 40px;
+}
+
+td > a {
+    color: #000000;
+}
+
+#navbarSupportedContent {
+    margin-left: -30px;
 }
