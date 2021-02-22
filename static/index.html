@@ -38,66 +38,75 @@
                 </nav>
             </div>
         </div>
-        <div class="d-flex flex-column justify-content-around h-100 align-items-center">
-            <div class="welcome-card welcome-width mt-5 pb-4 justify-content-center">
-                <div class="d-flex justify-content-center">
-                    <form>
-                        <div class="text-center pb-3">
-                            <h1>Profile</h1>
+        <main class="d-flex flex-column">
+            <div class="container">
+                <div class="w-100 d-flex justify-content-center">
+                    <div class="welcome-card welcome-width my-5 pb-4">
+                        <div class="d-flex justify-content-center">
+                            <form>
+                                <div class="text-center pb-3">
+                                    <h1>Profile</h1>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text w-40"><i class="fas fa-user"></i></span>
+                                    </div>
+                                    <input type="text" name="" class="form-control input_user" value="" placeholder="username" disabled>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text w-40"><i class="fas fa-user"></i></span>
+                                    </div>
+                                    <input type="text" name="" class="form-control input_user" value="" placeholder="name">
+                                </div>
+                                <div class="input-group flex-row">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text w-40"><i class="fas fa-envelope"></i></span>
+                                    </div>
+                                    <input type="text" name="" class="form-control input_user" value="" placeholder="email">
+                                </div>
+                                <div class="d-flex justify-content-center mt-3 px-5">
+                                    <a type="button" name="button" class="btn login_btn w-100" href="/">Update</a>
+                                </div>
+                            </form>
                         </div>
-                        <div class="input-group mb-3">
-                            <div class="input-group-append">
-                                <span class="input-group-text w-40"><i class="fas fa-user"></i></span>
-                            </div>
-                            <input type="text" name="" class="form-control input_user" value="" placeholder="username" disabled>
+                    </div>
+                </div>
+                <div class="W-100 d-flex justify-content-center pb-5">
+                    <div class="welcome-card rented-movies p-2">
+                        <div class="text-center">
+                            <h1>Rented Movies</h1>
                         </div>
-                        <div class="input-group mb-3">
-                            <div class="input-group-append">
-                                <span class="input-group-text w-40"><i class="fas fa-user"></i></span>
-                            </div>
-                            <input type="text" name="" class="form-control input_user" value="" placeholder="name">
-                        </div>
-                        <div class="input-group flex-row">
-                            <div class="input-group-append">
-                                <span class="input-group-text w-40"><i class="fas fa-envelope"></i></span>
-                            </div>
-                            <input type="text" name="" class="form-control input_user" value="" placeholder="email">
-                        </div>
-                    </form>
+                        <table class="table table-borderless table-striped px-2 table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Title</th>
+                                    <th scope="col" class="text-center">Unrent</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td scope="col">
+                                        <a href="#">Avengers</a>
+                                    </td>
+                                    <td scope="col" class="text-center">
+                                        <a href><i class="fas fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td scope="col">
+                                        <a href="#">The Shawshank Redemption</a>
+                                    </td>
+                                    <td scope="col" class="text-center">
+                                        <a href><i class="fas fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-            <div class="welcome-card rented-movies card">
-                <div class="text-center pb-3">
-                    <h1>Rented Movies</h1>
-                </div>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Title</th>
-                            <th scope="col" class="text-center">Unrent</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td scope="col">
-                                <a href="#">Avengers</a>
-                            </td>
-                            <td scope="col" class="text-center">
-                                <a href><i class="fas fa-trash"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td scope="col">
-                                <a href="#">The Shawshank Redemption</a>
-                            </td>
-                            <td scope="col" class="text-center">
-                                <a href><i class="fas fa-trash"></i></a>
-                            </td>
-                        </tr>
-                        
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        </main>
     </body>
 </html>
