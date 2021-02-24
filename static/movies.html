@@ -53,11 +53,16 @@
                             <h3>Movies</h3>
                         </div>
                         
-                        <form class="pt-3">
-                            <input class="form-control w-50" id="myInput" type="text" placeholder="Search..">
+                        <form class="pt-3 d-flex flex-row">
+                            <div class="w-50">
+                                <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                            </div>
                             
-                            <!-- <input id="hide_unavailable" class="form-check-input" type="checkbox">
-                            <label for="hide_unavailable">í</label> -->
+                            <div class="form-check w-50 text-right">
+                                <input id="show_unavailable" class="form-check-input" type="checkbox" style="vertical-align: middle; position: relative; bottom: 1px;">
+                                <label class="form-check-label" for="show_unavailable" style="vertical-align: middle; position: relative;">Show unavailable</label>
+                            </div>
+                            
                         </form>
                         <br>
                         <div style="overflow-x: auto;">
@@ -72,7 +77,9 @@
                                     </thead>
                                     <tbody id="myTable">
                                         <tr>
-                                            <td>The Shawshank Redemption</td>
+                                            <td>
+                                                <a href="/movie.html">The Shawshank Redemption</a>
+                                            </td>
                                             <td>1994</td>
                                             <td>Frank Darabont</td>
                                             <td>Drama</td>
