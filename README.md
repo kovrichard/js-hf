@@ -9,3 +9,13 @@ Users choose movies from a list. When a movie is rented, the number of available
 is decremented by one. Only movies with at least one available copy may be rented.
 
 Admin users are able to add and delete movies, normal users are able to delete their profile.
+
+## Homework #2
+
+### Changes based on the feedback about Homework #1
+
+- Added "Delete profile" option
+- Added "Modify" button to `movie.html` to satisfy Update and Delete of CRUD
+- Added "New" button to `movies.html` to satisfy Create of CRUD
+- Added Password reset functionality to login page (and corresponding `password-reset.html`)
+- Admin rights will be indicated in the database with a flag
