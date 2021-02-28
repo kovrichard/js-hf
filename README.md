@@ -63,7 +63,7 @@ middlewares/movie/
 - `saveMovie.js`
 - `deleteMovie.js`
 
-middlewares/
+middlewares/generic
 - `render.js`
 
 ### Endpoints
