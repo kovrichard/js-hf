@@ -28,3 +28,108 @@ Admin users are able to add and delete movies, normal users are able to delete t
 - No logic is implemented yet, the pages can be accessed through buttons and links.
 - The `movie.html` is filled with data for now, but it will be a template later, when logic is added as well
 - The same can be said about `movie-modify.html`. This page will be empty on pressing the **New** button on `movies.html`
+
+## Homework #3
+
+### Views
+
+- `index.html`: profile and list rented movies, modify button, delete profile button)
+- `login.html`: login form, login button, forgot password button, go to registration button)
+- `register.html`: register form, register button, go to login button
+- `movie.html`: table of movie details, rent movie button, modify movie button
+- `movies.html`: table of movies, new movie button
+- `movie-modify`: form with movie details on modify, empty form on new movie, update button, delete button
+- `password-reset.html`: form for resetting password, reset button
+
+### Middlewares
+
+middlewares/auth/
+- `auth.js`
+- `checkAdmin.js`
+- `checkPassword.js`
+
+middlewares/user/
+- `getUser.js`
+- `getUsers.js`
+- `getUserMovies.js`
+- `getUserByEmail.js`
+- `getUserByUsername.js`
+- `saveUser.js`
+- `deleteUser.js`
+
+middlewares/movie/
+- `getMovie.js`
+- `getMovies.js`
+- `saveMovie.js`
+- `deleteMovie.js`
+
+middlewares/
+- `render.js`
+
+### Endpoints
+
+GET / --------------------------> render profile if authenticated, else redirect to /login
+- `authMW`
+- `getUserMW`
+- `getUserMoviesMW`
+- `renderMW(index.html)`
+
+GET /user/:userid/delete -------> delete user and redirect to /login
+- `deleteUserMW`
+
+GET /movie ---------------------> render movies list
+- `authMW`
+- `getMoviesMW`
+- `renderMW(movies.html)`
+
+GET /movie/new -----------------> render movie modification with empty form
+- `authMW`
+- `checkAdminMW`
+- `renderMW(movie-modify.html)`
+
+POST /movie/new ----------------> save new movie and redirect to /movie
+- `authMW`
+- `checkAdminMW`
+- `saveMovieMW`
+
+GET /movie/:movieid ------------> render movie information
+- `authMW`
+- `getMovieMW`
+- `renderMW(movie.html)`
+
+GET /movie/:movieid/modify -----> render movie modification with movie information filled
+- `authMW`
+- `checkAdminMW`
+- `getMovieMW`
+- `renderMW(movie-modify.html)`
+
+POST /movie/:movieid/modify ----> save updated movie and redirect to /movie
+- `authMW`
+- `checkAdminMW`
+- `saveMovieMW`
+
+GET /movie/:movieid/delete -----> delete movie and redirect to /movie
+- `authMW`
+- `checkAdminMW`
+- `getMovieMW`
+- `deleteMovieMW`
+
+GET /login ---------------------> render login form
+- `renderMW(login.html)`
+
+POST /login --------------------> check user password and redirect to /, else warn about wrong password and reload /login
+- `checkPasswordMW`
+
+GET /register ------------------> render register form
+- `renderMW(register.html)`
+
+POST /register -----------------> save new user, login user and redirect to /
+- `saveUserMW`
+- `getUsersMW`
+
+GET /password-reset ------------> render password reset form 
+- `renderMW(password-reset.html)`
+
+POST /password-reset -----------> get user by any identifier, set new password, show it and redirect to login
+- `getUserByEmailMW`
+- `getUserByUsernameMW`
