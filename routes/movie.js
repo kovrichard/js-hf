@@ -38,7 +38,7 @@ module.exports = (app) => {
         renderMW(objectRepository, 'movie'),
     );
 
-    app.get('/movie/:movieid',
+    app.get('/movie/:movieid/modify',
         authMW(objectRepository),
         checkAdminMW(objectRepository),
         getMovieMW(objectRepository),
