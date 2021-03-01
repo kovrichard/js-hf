@@ -3,6 +3,7 @@
  */
 module.exports = (objectRepository) => {
     return (req, res, next) => {
+        console.log("Getting user...");
         next();
     }
 };
