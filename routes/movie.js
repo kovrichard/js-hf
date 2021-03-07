@@ -45,7 +45,7 @@ module.exports = (app) => {
         renderMW(objectRepository, 'movie-modify'),
     );
 
-    app.post('/movie/:movieid',
+    app.post('/movie/:movieid/modify',
         authMW(objectRepository),
         checkAdminMW(objectRepository),
         saveMovieMW(objectRepository),
