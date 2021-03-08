@@ -19,17 +19,11 @@ module.exports = (app) => {
         renderMW(objectRepository, 'movies'),
     );
 
-    app.get('/movie/new',
-        authMW(objectRepository),
-        checkAdminMW(objectRepository),
-        renderMW(objectRepository, 'movie-modify'),
-    );
-
-    app.post('/movie/new',
+    app.use('/movie/new',
         authMW(objectRepository),
         checkAdminMW(objectRepository),
         saveMovieMW(objectRepository),
-        renderMW(objectRepository, 'movies'),
+        renderMW(objectRepository, 'movie-modify'),
     );
 
     app.get('/movie/:movieid',
@@ -38,18 +32,12 @@ module.exports = (app) => {
         renderMW(objectRepository, 'movie'),
     );
 
-    app.get('/movie/:movieid/modify',
+    app.use('/movie/:movieid/modify',
         authMW(objectRepository),
         checkAdminMW(objectRepository),
         getMovieMW(objectRepository),
-        renderMW(objectRepository, 'movie-modify'),
-    );
-
-    app.post('/movie/:movieid/modify',
-        authMW(objectRepository),
-        checkAdminMW(objectRepository),
         saveMovieMW(objectRepository),
-        renderMW(objectRepository, 'movies'),
+        renderMW(objectRepository, 'movie-modify'),
     );
 
     app.get('/movie/:movieid/delete',

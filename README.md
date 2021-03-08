@@ -82,31 +82,23 @@ GET /movie ---------------------> render movies list
 - `getMoviesMW`
 - `renderMW(movies.html)`
 
-GET /movie/new -----------------> render movie modification with empty form
-- `authMW`
-- `checkAdminMW`
-- `renderMW(movie-modify.html)`
-
-POST /movie/new ----------------> save new movie and redirect to /movie
+GET, POST /movie/new -----------------> render movie modification with empty form, or save new movie and redirec to /movies
 - `authMW`
 - `checkAdminMW`
 - `saveMovieMW`
+- `renderMW(movie-modify.html)`
 
 GET /movie/:movieid ------------> render movie information
 - `authMW`
 - `getMovieMW`
 - `renderMW(movie.html)`
 
-GET /movie/:movieid/modify -----> render movie modification with movie information filled
+GET, POST /movie/:movieid/modify -----> render movie modification with movie information filled, or save updated movie and redirect to /movies
 - `authMW`
 - `checkAdminMW`
 - `getMovieMW`
-- `renderMW(movie-modify.html)`
-
-POST /movie/:movieid/modify ----> save updated movie and redirect to /movie
-- `authMW`
-- `checkAdminMW`
 - `saveMovieMW`
+- `renderMW(movie-modify.html)`
 
 GET /movie/:movieid/delete -----> delete movie and redirect to /movie
 - `authMW`
