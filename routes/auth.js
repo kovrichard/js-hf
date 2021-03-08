@@ -1,8 +1,7 @@
 var renderMW = require('../middleware/generic/render');
 var checkPasswordMW = require('../middleware/auth/checkPassword');
 var saveUserMW = require('../middleware/user/saveUser');
-var getUserByUsernameMW = require('../middleware/user/getUserByUsername');
-var getUserByEmailMW = require('../middleware/user/getUserByEmail');
+var resetUserPassword = require('../middleware/user/resetUserPassword');
 
 userModel = '';
 
@@ -38,8 +37,8 @@ module.exports = (app) => {
     );
 
     app.post('/password-reset',
-        getUserByUsernameMW(objectRepository),
-        getUserByEmailMW(objectRepository),
+        getUser(objectRepository),
+        resetUserPassword(objectRepository),
         (req, res, next) => {
             return res.redirect('/login');
         }

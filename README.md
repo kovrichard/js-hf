@@ -52,10 +52,9 @@ middlewares/user/
 - `getUser.js`
 - `getUsers.js`
 - `getUserMovies.js`
-- `getUserByEmail.js`
-- `getUserByUsername.js`
 - `saveUser.js`
 - `deleteUser.js`
+- `resetUserPassword.js`
 
 middlewares/movie/
 - `getMovie.js`
@@ -74,10 +73,10 @@ GET / --------------------------> render profile if authenticated, else redirect
 - `getUserMoviesMW`
 - `renderMW(index.html)`
 
-GET /user/:userid/delete -------> delete user and redirect to /login
+GET /user/:userid/delete -------------> delete user and redirect to /login
 - `deleteUserMW`
 
-GET /movie ---------------------> render movies list
+GET /movie ---------------------------> render movies list
 - `authMW`
 - `getMoviesMW`
 - `renderMW(movies.html)`
@@ -88,7 +87,7 @@ GET, POST /movie/new -----------------> render movie modification with empty for
 - `saveMovieMW`
 - `renderMW(movie-modify.html)`
 
-GET /movie/:movieid ------------> render movie information
+GET /movie/:movieid ------------------> render movie information
 - `authMW`
 - `getMovieMW`
 - `renderMW(movie.html)`
@@ -100,28 +99,26 @@ GET, POST /movie/:movieid/modify -----> render movie modification with movie inf
 - `saveMovieMW`
 - `renderMW(movie-modify.html)`
 
-GET /movie/:movieid/delete -----> delete movie and redirect to /movie
+GET /movie/:movieid/delete -----------> delete movie and redirect to /movie
 - `authMW`
 - `checkAdminMW`
 - `getMovieMW`
 - `deleteMovieMW`
 
-GET /login ---------------------> render login form
+GET /login ---------------------------> render login form
 - `renderMW(login.html)`
 
-POST /login --------------------> check user password and redirect to /, else warn about wrong password and reload /login
+POST /login --------------------------> check user password and redirect to /, else warn about wrong password and reload /login
 - `checkPasswordMW`
 
-GET /register ------------------> render register form
+GET /register ------------------------> render register form
 - `renderMW(register.html)`
 
-POST /register -----------------> save new user, login user and redirect to /
+POST /register -----------------------> save new user, login user and redirect to /
 - `saveUserMW`
 - `getUsersMW`
 
-GET /password-reset ------------> render password reset form 
+GET, POST /password-reset ------------> render password reset form or get user by any identifier, set new password, show it and redirect to login
+- `getUser`
+- `resetUserPassword`
 - `renderMW(password-reset.html)`
-
-POST /password-reset -----------> get user by any identifier, set new password, show it and redirect to login
-- `getUserByEmailMW`
-- `getUserByUsernameMW`
