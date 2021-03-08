@@ -50,7 +50,6 @@ middlewares/auth/
 
 middlewares/user/
 - `getUser.js`
-- `getUsers.js`
 - `getUserMovies.js`
 - `saveUser.js`
 - `deleteUser.js`
@@ -73,7 +72,14 @@ GET / --------------------------> render profile if authenticated, else redirect
 - `getUserMoviesMW`
 - `renderMW(index.html)`
 
+POST /user/:userid/modify
+- `authMW`
+- `getUserMW`
+- `saveUserMW`
+
 GET /user/:userid/delete -------------> delete user and redirect to /login
+- `authMW`
+- `getUserMW`
 - `deleteUserMW`
 
 GET /movie ---------------------------> render movies list
@@ -99,24 +105,19 @@ GET, POST /movie/:movieid/modify -----> render movie modification with movie inf
 - `saveMovieMW`
 - `renderMW(movie-modify.html)`
 
-GET /movie/:movieid/delete -----------> delete movie and redirect to /movie
+GET /movie/:movieid/delete -----------> delete movie and redirect to /movies
 - `authMW`
 - `checkAdminMW`
 - `getMovieMW`
 - `deleteMovieMW`
 
-GET /login ---------------------------> render login form
+GET, POST /login ---------------------> render login form; or check user password and redirect to /, else warn about wrong password and reload /login
+- `checkPasswordMW`
 - `renderMW(login.html)`
 
-POST /login --------------------------> check user password and redirect to /, else warn about wrong password and reload /login
-- `checkPasswordMW`
-
-GET /register ------------------------> render register form
-- `renderMW(register.html)`
-
-POST /register -----------------------> save new user, login user and redirect to /
+GET, POST /register ------------------> render register form or save new user, login user and redirect to /
 - `saveUserMW`
-- `getUsersMW`
+- `renderMW(register.html)`
 
 GET, POST /password-reset ------------> render password reset form or get user by any identifier, set new password, show it and redirect to login
 - `getUser`

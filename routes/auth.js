@@ -10,37 +10,19 @@ module.exports = (app) => {
         userModel: userModel
     };
 
-    app.get('/login',
+    app.use('/login',
+        checkPasswordMW(objectRepository),
         renderMW(objectRepository, 'login'),
     );
 
-    app.post('/login',
-        checkPasswordMW(objectRepository),
-        (req, res, next) => {
-            return res.redirect('/');
-        }
-    );
-
-    app.get('/register',
+    app.use('/register',
+        saveUserMW(objectRepository),
         renderMW(objectRepository, 'register'),
     );
 
-    app.post('/register',
-        saveUserMW(objectRepository),
-        (req, res, next) => {
-            return res.redirect('/');
-        }
-    );
-
     app.get('/password-reset',
-        renderMW(objectRepository, 'password-reset')
-    );
-
-    app.post('/password-reset',
         getUser(objectRepository),
         resetUserPassword(objectRepository),
-        (req, res, next) => {
-            return res.redirect('/login');
-        }
+        renderMW(objectRepository, 'password-reset')
     );
 };

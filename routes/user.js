@@ -16,14 +16,13 @@ module.exports = (app) => {
         authMW(objectRepository),
         getUserMW(objectRepository),
         getUserMoviesMW(objectRepository),
-        renderMW(objectRepository, 'index'),
+        renderMW(objectRepository, 'index')
     );
 
     app.post('/user/:userid/modify',
         authMW(objectRepository),
         getUserMW(objectRepository),
         saveUserMW(objectRepository),
-        renderMW(objectRepository, 'index')
     );
 
     app.get('/user/:userid/delete',
