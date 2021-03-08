@@ -1,6 +1,6 @@
 /**
  * Save user to database, if anything came in req.body, then redirect to /
- * Else call next()
+ * Else call next() (we are in a GET request)
  */
 module.exports = (objectRepository) => {
     return (req, res, next) => {

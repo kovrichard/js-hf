@@ -22,15 +22,12 @@ module.exports = (app) => {
     app.post('/user/:userid/modify',
         authMW(objectRepository),
         getUserMW(objectRepository),
-        saveUserMW(objectRepository),
+        saveUserMW(objectRepository)
     );
 
     app.get('/user/:userid/delete',
         authMW(objectRepository),
         getUserMW(objectRepository),
-        deleteUserMW(objectRepository),
-        (req, res, next) => {
-            return res.redirect('/login');
-        }
+        deleteUserMW(objectRepository)
     );
 };
