@@ -33,8 +33,8 @@ Admin users are able to add and delete movies, normal users are able to delete t
 
 ### Views
 
-- `index.html`: profile and list rented movies, modify button, delete profile button)
-- `login.html`: login form, login button, forgot password button, go to registration button)
+- `index.html`: profile and list of rented movies, modify button, delete profile button
+- `login.html`: login form, login button, forgot password button, go to registration button
 - `register.html`: register form, register button, go to login button
 - `movie.html`: table of movie details, rent movie button, modify movie button
 - `movies.html`: table of movies, new movie button
@@ -66,60 +66,71 @@ middlewares/generic
 
 ### Endpoints
 
-GET / --------------------------> render profile if authenticated, else redirect to /login
-- `authMW`
-- `getUserMW`
-- `getUserMoviesMW`
-- `renderMW(index.html)`
+#### GET /
+- render profile if authenticated, else redirect to /login
+1. `authMW`
+2. `getUserMW`
+3. `getUserMoviesMW`
+4. `renderMW(index.html)`
 
-POST /user/:userid/modify
-- `authMW`
-- `getUserMW`
-- `saveUserMW`
+#### POST /user/:userid/modify
+- save modified user in db
+1. `authMW`
+2. `getUserMW`
+3. `saveUserMW`
 
-GET /user/:userid/delete -------------> delete user and redirect to /login
-- `authMW`
-- `getUserMW`
-- `deleteUserMW`
+#### GET /user/:userid/delete
+- delete user and redirect to /login
+1. `authMW`
+2. `getUserMW`
+3. `deleteUserMW`
 
-GET /movie ---------------------------> render movies list
-- `authMW`
-- `getMoviesMW`
-- `renderMW(movies.html)`
+#### GET /movie
+- render movies list
+1. `authMW`
+2. `getMoviesMW`
+3. `renderMW(movies.html)`
 
-GET, POST /movie/new -----------------> render movie modification with empty form, or save new movie and redirec to /movies
-- `authMW`
-- `checkAdminMW`
-- `saveMovieMW`
-- `renderMW(movie-modify.html)`
+#### GET, POST /movie/new
+- render movie modification with empty form, or save new movie and redirec to /movies
+1. `authMW`
+2. `checkAdminMW`
+3. `saveMovieMW`
+4. `renderMW(movie-modify.html)`
 
-GET /movie/:movieid ------------------> render movie information
-- `authMW`
-- `getMovieMW`
-- `renderMW(movie.html)`
+#### GET /movie/:movieid
+- render movie information
+1. `authMW`
+2. `getMovieMW`
+3. `renderMW(movie.html)`
 
-GET, POST /movie/:movieid/modify -----> render movie modification with movie information filled, or save updated movie and redirect to /movies
-- `authMW`
-- `checkAdminMW`
-- `getMovieMW`
-- `saveMovieMW`
-- `renderMW(movie-modify.html)`
+#### GET, POST /movie/:movieid/modify
+- render movie modification with movie information filled, or save updated movie and redirect to /movies
+1. `authMW`
+2. `checkAdminMW`
+3. `getMovieMW`
+4. `saveMovieMW`
+5. `renderMW(movie-modify.html)`
 
-GET /movie/:movieid/delete -----------> delete movie and redirect to /movies
-- `authMW`
-- `checkAdminMW`
-- `getMovieMW`
-- `deleteMovieMW`
+#### GET /movie/:movieid/delete
+- delete movie and redirect to /movies
+1. `authMW`
+2. `checkAdminMW`
+3. `getMovieMW`
+4. `deleteMovieMW`
 
-GET, POST /login ---------------------> render login form; or check user password and redirect to /, else warn about wrong password and reload /login
-- `checkPasswordMW`
-- `renderMW(login.html)`
+#### GET, POST /login
+- render login form; or check user password and redirect to /, else warn about wrong password and reload /login
+1. `checkPasswordMW`
+2. `renderMW(login.html)`
 
-GET, POST /register ------------------> render register form or save new user, login user and redirect to /
-- `saveUserMW`
-- `renderMW(register.html)`
+#### GET, POST /register
+- render register form or save new user, login user and redirect to /
+1. `saveUserMW`
+2. `renderMW(register.html)`
 
-GET, POST /password-reset ------------> render password reset form or get user by any identifier, set new password, show it and redirect to login
-- `getUser`
-- `resetUserPassword`
-- `renderMW(password-reset.html)`
+#### GET, POST /password-reset
+- render password reset form or get user by any identifier, set new password, show it and redirect to login
+1. `getUser`
+2. `resetUserPassword`
+3. `renderMW(password-reset.html)`
