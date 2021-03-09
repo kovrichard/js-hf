@@ -4,7 +4,7 @@
  */
  module.exports = (objectRepository) => {
     return (req, res, next) => {
-        console.log("Reset password");
+        console.log("Reseting password...");
         next();
     }
 };

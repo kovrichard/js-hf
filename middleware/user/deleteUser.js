@@ -3,6 +3,6 @@
  */
 module.exports = (objectRepository) => {
     return (req, res, next) => {
-        console.log("Delete user");
+        console.log("Deleting user...");
     }
 };

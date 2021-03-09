@@ -1,5 +1,5 @@
 /**
- * Load user by id from database
+ * Load user by some identifier (id, username, email) from database
  */
 module.exports = (objectRepository) => {
     return (req, res, next) => {
