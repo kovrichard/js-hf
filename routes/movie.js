@@ -44,9 +44,6 @@ module.exports = (app) => {
         authMW(objectRepository),
         checkAdminMW(objectRepository),
         getMovieMW(objectRepository),
-        deleteMovieMW(objectRepository),
-        (req, res, next) => {
-            return res.redirect('/movies');
-        }
+        deleteMovieMW(objectRepository)
     );
 };
