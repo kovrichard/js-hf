@@ -92,7 +92,7 @@ middlewares/generic
 3. `renderMW(movies.html)`
 
 #### GET, POST /movie/new
-- render movie modification with empty form, or save new movie and redirec to /movies
+- render movie modification with empty form, or save new movie and redirect to /movies
 1. `authMW`
 2. `checkAdminMW`
 3. `saveMovieMW`

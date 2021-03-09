@@ -1,5 +1,6 @@
 var renderMW = require('../middleware/generic/render');
 var checkPasswordMW = require('../middleware/auth/checkPassword');
+var getUserMW = require('../middleware/user/getUser');
 var saveUserMW = require('../middleware/user/saveUser');
 var resetUserPassword = require('../middleware/user/resetUserPassword');
 
@@ -21,7 +22,7 @@ module.exports = (app) => {
     );
 
     app.get('/password-reset',
-        getUser(objectRepository),
+        getUserMW(objectRepository),
         resetUserPassword(objectRepository),
         renderMW(objectRepository, 'password-reset')
     );
