@@ -92,7 +92,7 @@ middlewares/generic
 3. `renderMW(movies.html)`
 
 #### GET, POST /movie/new
-- render movie modification with empty form, or save new movie and redirect to /movies
+- render movie modification with empty form, or save new movie and redirect to /movie
 1. `authMW`
 2. `checkAdminMW`
 3. `saveMovieMW`
@@ -105,7 +105,7 @@ middlewares/generic
 3. `renderMW(movie.html)`
 
 #### GET, POST /movie/:movieid/modify
-- render movie modification with movie information filled, or save updated movie and redirect to /movies
+- render movie modification with movie information filled, or save updated movie and redirect to /movie
 1. `authMW`
 2. `checkAdminMW`
 3. `getMovieMW`
@@ -113,7 +113,7 @@ middlewares/generic
 5. `renderMW(movie-modify.html)`
 
 #### GET /movie/:movieid/delete
-- delete movie and redirect to /movies
+- delete movie and redirect to /movie
 1. `authMW`
 2. `checkAdminMW`
 3. `getMovieMW`

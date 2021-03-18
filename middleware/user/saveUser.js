@@ -1,5 +1,5 @@
 /**
- * Save user to database, if anything came in req.body, then redirect to /
+ * Save user to database, if anything came in req.body (register) or res.locals (modify), then redirect to /
  * Else call next() (we are in a GET request)
  */
 module.exports = (objectRepository) => {
