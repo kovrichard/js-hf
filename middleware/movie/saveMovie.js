@@ -1,5 +1,5 @@
 /**
- * If a movie came in req.body (new), save it to database (or overwrite if already existed), then redirect to /movies
+ * If a movie came in req.body (new), save it to database (or overwrite if already existed), then redirect to /movie
  * If res.locals has something, use this instead (modify)
  * If both are empty, call next() (we are in a GET request)
  */
