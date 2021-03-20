@@ -44,30 +44,22 @@
                                     </tr>
                                 </thead>
                                 <tbody id="myTable">
-                                    <tr>
-                                        <td>
-                                            <a href="/movie/1">The Shawshank Redemption</a>
-                                        </td>
-                                        <td>1994</td>
-                                        <td>Frank Darabont</td>
-                                        <td>Drama</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <a href="#">Avengers</a>
-                                        </td>
-                                        <td>2012</td>
-                                        <td>Joss Whedon</td>
-                                        <td>Superhero</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <a href="#">The Godfather</a>
-                                        </td>
-                                        <td>1972</td>
-                                        <td>Francis Ford Coppola</td>
-                                        <td>Crime</td>
-                                    </tr>
+                                    <% movies.forEach((movie) => { %>
+                                        <tr>
+                                            <td>
+                                                <a href="/movie/<%= movie.id %>"><%= movie.title %></a>
+                                            </td>
+                                            <td>
+                                                <%= movie.year %>
+                                            </td>
+                                            <td>
+                                                <%= movie.directedby %>
+                                            </td>
+                                            <td>
+                                                <%= movie.category %>
+                                            </td>
+                                        </tr>
+                                    <% }); %>
                                 </tbody>
                             </table>
                         </div>
