@@ -13,7 +13,7 @@
                 <div class="w-100 d-flex justify-content-center">
                     <div class="welcome-card welcome-width my-5 pb-4">
                         <div class="d-flex justify-content-center">
-                            <form>
+                            <form method="POST" action="/user/<%= user.id %>/modify">
                                 <div class="text-center pb-3">
                                     <h1>Profile</h1>
                                 </div>
@@ -21,26 +21,26 @@
                                     <div class="input-group-append">
                                         <span class="input-group-text w-40"><i class="fas fa-user"></i></span>
                                     </div>
-                                    <input type="text" name="" class="form-control input_user" value="" placeholder="username" disabled>
+                                    <input type="text" name="" class="form-control input_user" value="<%= user.username %>" placeholder="username" disabled>
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-append">
                                         <span class="input-group-text w-40"><i class="fas fa-user"></i></span>
                                     </div>
-                                    <input type="text" name="" class="form-control input_user" value="" placeholder="name">
+                                    <input type="text" name="" class="form-control input_user" value="<%= user.name %>" placeholder="name">
                                 </div>
                                 <div class="input-group flex-row">
                                     <div class="input-group-append">
                                         <span class="input-group-text w-40"><i class="fas fa-envelope"></i></span>
                                     </div>
-                                    <input type="text" name="" class="form-control input_user" value="" placeholder="email">
+                                    <input type="text" name="" class="form-control input_user" value="<%= user.email %>" placeholder="email">
                                 </div>
                                 <div class="d-flex flex-row justify-content-around">
                                     <div class="text-center pt-3">
-                                        <a type="button" name="button" class="btn login_btn w-100" href="/">Update</a>
+                                        <button type="submit" name="button" class="btn login_btn w-100">Update</button>
                                     </div>
                                     <div class="text-center pt-3">
-                                        <a type="button" name="button" class="btn login_btn w-100" href="/user/1/delete">Delete profile</a>
+                                        <a type="button" name="button" class="btn login_btn w-100" href="/user/<%= user.id %>/delete">Delete profile</a>
                                     </div>
                                 </div>
                             </form>

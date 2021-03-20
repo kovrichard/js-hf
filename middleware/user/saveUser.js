@@ -4,7 +4,12 @@
  */
 module.exports = (objectRepository) => {
     return (req, res, next) => {
+        if (req.method == 'GET') {
+            console.log('GET request detected, calling next()...');
+            return next();
+        }
+
         console.log("Saving user...");
-        next();
+        res.redirect('/');
     }
 };
