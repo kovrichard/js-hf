@@ -13,7 +13,9 @@
                 <div class="W-100 d-flex justify-content-center pb-5">
                     <div class="welcome-card rented-movies p-5 mt-5">
                         <div class="text-center pb-3">
-                            <h3>The Shawshank Redemption</h3>
+                            <h3>
+                                <%= movie.title %>
+                            </h3>
                         </div>
                         <table class="table table-borderless table-striped px-2">
                             <tbody>
@@ -22,7 +24,7 @@
                                         Directed by
                                     </td>
                                     <td scope="col" class="text-left">
-                                        Frank Darabont
+                                        <%= movie.directedby %>
                                     </td>
                                 </tr>
                                 <tr>
@@ -30,7 +32,7 @@
                                         Year
                                     </td>
                                     <td scope="col" class="text-left">
-                                        1994
+                                        <%= movie.year %>
                                     </td>
                                 </tr>
                                 <tr>
@@ -38,7 +40,7 @@
                                         Category
                                     </td>
                                     <td scope="col" class="text-left">
-                                        Drama
+                                        <%= movie.category %>
                                     </td>
                                 </tr>
                                 <tr>
@@ -47,10 +49,11 @@
                                     </td>
                                     <td scope="col" class="text-left">
                                         <ul>
-                                            <li>Tim Robbins</li>
-                                            <li>Morgan Freeman</li>
-                                            <li>Bob Gunton</li>
-                                            <li>William Sadler</li>
+                                            <% movie.cast.forEach((actor) => { %>
+                                                <li>
+                                                    <%= actor %>
+                                                </li>
+                                            <% }); %>
                                         </ul>
                                     </td>
                                 </tr>
@@ -59,20 +62,20 @@
                                         Available
                                     </td>
                                     <td scope="col" class="text-left">
-                                        3
+                                        <%= movie.available %>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                         <div class="text-center">
-                            <img src="/static/the_shawshank_redemption.jpg" style="max-height:20rem;">
+                            <img src="<%= movie.image %>" style="max-height:20rem;">
                         </div>
                         <div class="d-flex flex-row justify-content-around">
                             <div class="text-center pt-3">
                                 <a type="button" class="btn login_btn" href="/">Rent</a>
                             </div>
                             <div class="text-center pt-3">
-                                <a type="button" class="btn login_btn" href="/movie/1/modify">Modify</a>
+                                <a type="button" class="btn login_btn" href="/movie/<%= movie.id %>/modify">Modify</a>
                             </div>
                         </div>
                     </div>
