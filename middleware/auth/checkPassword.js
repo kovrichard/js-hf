@@ -5,7 +5,19 @@
  */
 module.exports = (objectRepository) => {
     return (req, res, next) => {
-        console.log("Checking password...");
+        if (typeof req.body.username === 'undefined') {
+            console.log("GET request detected, calling next()...");
+        } else {
+            console.log(`Checking password for user ${req.body.username}`);
+
+            if (req.body.username == 'admin' && req.body.password == 'admin') {
+                console.log('Username and password OK, logging in...')
+                return res.redirect('/');
+            } else {
+                console.log('Username or password is wrong.')
+                return res.redirect('/login');
+            }
+        }
         next();
     }
 };
