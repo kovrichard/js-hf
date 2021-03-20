@@ -13,17 +13,27 @@
                 <form>
                     <div class="W-100 d-flex justify-content-center pb-5">
                         <div class="welcome-card rented-movies p-5 mt-5">
-                            <div class="pb-3">
-                                <input type="text" class="form-control text-center" value="The Shawshank Redemption">
+                            <div class="pb-3 text-center">
+                                <h3>
+                                    <%= typeof movie === 'undefined' ? 'Save new movie' : 'Modify movie' %>
+                                </h3>
                             </div>
                             <table class="table table-borderless table-striped px-2">
                                 <tbody>
                                     <tr>
                                         <td scope="col" class="text-right">
+                                            Title
+                                        </td>
+                                        <td scope="col" class="text-left">
+                                            <input type="text" class="form-control" value="<%= typeof movie === 'undefined' ? '' : movie.title %>">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="col" class="text-right">
                                             Directed by
                                         </td>
                                         <td scope="col" class="text-left">
-                                            <input type="text" class="form-control" value="Frank Darabont">
+                                            <input type="text" class="form-control" value="<%= typeof movie === 'undefined' ? '' : movie.directedby %>">
                                         </td>
                                     </tr>
                                     <tr>
@@ -31,7 +41,7 @@
                                             Year
                                         </td>
                                         <td scope="col" class="text-left">
-                                            <input type="text" class="form-control" value="1994">
+                                            <input type="text" class="form-control" value="<%= typeof movie === 'undefined' ? '' : movie.year %>">
                                         </td>
                                     </tr>
                                     <tr>
@@ -39,7 +49,7 @@
                                             Category
                                         </td>
                                         <td scope="col" class="text-left">
-                                            <input type="text" class="form-control" value="Drama">
+                                            <input type="text" class="form-control" value="<%= typeof movie === 'undefined' ? '' : movie.category %>">
                                         </td>
                                     </tr>
                                     <tr>
@@ -47,7 +57,12 @@
                                             Cast
                                         </td>
                                         <td scope="col" class="text-left">
-                                            <textarea class="form-control" value="1994"></textarea>
+                                            <textarea class="form-control">
+                                                <%_ if (typeof movie !== 'undefined') { _%>
+                                                    <%_ movie.cast.forEach((actor) => { _%><%= actor %>
+                                                    <%_ }) _%>
+                                                <%_ } _%>
+                                            </textarea>
                                         </td>
                                     </tr>
                                     <tr>
@@ -55,7 +70,7 @@
                                             Available
                                         </td>
                                         <td scope="col" class="text-left">
-                                            <input type="text" class="form-control" value="3">
+                                            <input type="text" class="form-control" value="<%= typeof movie === 'undefined' ? '' : movie.available %>">
                                         </td>
                                     </tr>
                                     <tr>
@@ -64,7 +79,7 @@
                                         </td>
                                         <td scope="col" class="text-left">
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="customFile">
+                                                <input type="file" class="custom-file-input" id="customFile" value="<%= typeof movie === 'undefined' ? '' : movie.image %>">
                                                 <label class="custom-file-label" for="customFile">Choose file</label>
                                               </div>
                                         </td>
@@ -76,7 +91,11 @@
                                     <a type="button" name="button" class="btn login_btn w-100" href="/movie">Save</a>
                                 </div>
                                 <div class="text-center pt-3">
-                                    <a type="button" name="button" class="btn login_btn w-100" href="/movie/1/delete">Delete</a>
+                                    <% if (typeof movie !== 'undefined') { %>
+                                        <a type="button" name="button" class="btn login_btn w-100" href="/movie/<%= movie.id %>/delete">Delete</a>
+                                    <% } else { %>
+                                        <a type="button" name="button" class="btn login_btn w-100" href="/movie">Cancel</a>
+                                    <% } %>
                                 </div>
                             </div>
                         </div>
