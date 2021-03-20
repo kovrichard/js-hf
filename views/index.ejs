@@ -60,23 +60,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td scope="col">
-                                        <a href="#">Avengers</a>
-                                    </td>
-                                    <td scope="col" class="text-center">
-                                        <a href><i class="fas fa-trash"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td scope="col">
-                                        <a href="/movie/1">The Shawshank Redemption</a>
-                                    </td>
-                                    <td scope="col" class="text-center">
-                                        <a href><i class="fas fa-trash"></i></a>
-                                    </td>
-                                </tr>
-                                
+                                <% usermovies.forEach((movie) => { %>
+                                    <tr>
+                                        <td scope="col">
+                                            <a href="movie/<%= movie.id %>"><%= movie.title %></a>
+                                        </td>
+                                        <td scope="col" class="text-center">
+                                            <a href><i class="fas fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                <% }); %>                                
                             </tbody>
                         </table>
                     </div>
