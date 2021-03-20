@@ -22,8 +22,11 @@ module.exports = (app) => {
     );
 
     app.get('/password-reset',
+        renderMW(objectRepository, 'password-reset')
+    );
+
+    app.post('/password-reset',
         getUserMW(objectRepository),
         resetUserPassword(objectRepository),
-        renderMW(objectRepository, 'password-reset')
     );
 };

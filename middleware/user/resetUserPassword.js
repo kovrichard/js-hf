@@ -4,7 +4,8 @@
  */
  module.exports = (objectRepository) => {
     return (req, res, next) => {
-        console.log("Reseting password...");
-        next();
+        console.log(`Reseting password for user ${res.locals.user.username}`);
+        console.log('New password is admin');
+        res.redirect('/login');
     }
 };
