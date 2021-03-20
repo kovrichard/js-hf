@@ -4,5 +4,6 @@
 module.exports = (objectRepository) => {
     return (req, res, next) => {
         console.log("Deleting user...");
+        res.redirect('/login');
     }
 };
