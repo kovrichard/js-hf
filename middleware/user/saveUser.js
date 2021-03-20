@@ -9,7 +9,12 @@ module.exports = (objectRepository) => {
             return next();
         }
 
-        console.log("Saving user...");
+        if (typeof req.body.username !== 'undefined') {
+            console.log(`Saving new user ${req.body.username}`);
+        } else if (typeof res.locals.user !== 'undefined') {
+            console.log(`Updating user ${res.locals.user.username}`);
+        }
+
         res.redirect('/');
     }
 };
