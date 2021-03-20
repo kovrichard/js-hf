@@ -11,10 +11,10 @@ module.exports = (objectRepository) => {
             console.log(`Checking password for user ${req.body.username}`);
 
             if (req.body.username == 'admin' && req.body.password == 'admin') {
-                console.log('Username and password OK, logging in...')
+                console.log('Username and password OK, logging in...');
                 return res.redirect('/');
             } else {
-                console.log('Username or password is wrong.')
+                console.log('Username or password is wrong.');
                 return res.redirect('/login');
             }
         }
