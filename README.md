@@ -140,6 +140,16 @@ middlewares/generic
 ### Notes
 
 - Additional endpoints created for rent and unrent
+- Additional middleware created for redirecting
+
+### New middlewares
+
+middlewares/movie/
+- `rentMovie.js`
+- `unrentMovie.js`
+
+middlewares/generic
+- `redirect.js`
 
 ### New endpoints
 

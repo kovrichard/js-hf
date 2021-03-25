@@ -4,7 +4,7 @@
  */
  module.exports = (objectRepository) => {
     return (req, res, next) => {
-        console.log("Unrenting movie...");
+        console.log(`Unrenting movie ${res.locals.movie.title}`);
         next();
     }
 };

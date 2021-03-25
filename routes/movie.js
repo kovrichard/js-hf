@@ -1,4 +1,5 @@
 var renderMW = require('../middleware/generic/render');
+var redirectMW = require('../middleware/generic/redirect');
 var authMW = require('../middleware/auth/auth');
 var getMovieMW = require('../middleware/movie/getMovie');
 var getMoviesMW = require('../middleware/movie/getMovies');
@@ -49,24 +50,27 @@ module.exports = (app) => {
         authMW(objectRepository),
         checkAdminMW(objectRepository),
         getMovieMW(objectRepository),
-        deleteMovieMW(objectRepository)
+        deleteMovieMW(objectRepository),
+        redirectMW(objectRepository, '/movie')
     );
 
-    app.get('/movie/:movieid/rent',
+    app.post('/movie/:movieid/rent',
         authMW(objectRepository),
         getUserMW(objectRepository),
         getMovieMW(objectRepository),
         rentMovieMW(objectRepository),
         saveMovieMW(objectRepository),
         saveUserMW(objectRepository),
+        redirectMW(objectRepository, '/')
     );
 
-    app.get('/movie/:movieid/unrent',
+    app.post('/movie/:movieid/unrent',
         authMW(objectRepository),
         getUserMW(objectRepository),
         getMovieMW(objectRepository),
         unrentMovieMW(objectRepository),
         saveMovieMW(objectRepository),
         saveUserMW(objectRepository),
+        redirectMW(objectRepository, '/')
     );
 };

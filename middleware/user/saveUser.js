@@ -1,5 +1,5 @@
 /**
- * Save user to database, if anything came in req.body (register) or res.locals (modify), then redirect to /
+ * Save user to database, if anything came in req.body (register) or res.locals (modify)
  * Else call next() (we are in a GET request)
  */
 module.exports = (objectRepository) => {
@@ -15,6 +15,6 @@ module.exports = (objectRepository) => {
             console.log(`Updating user ${res.locals.user.username}`);
         }
 
-        res.redirect('/');
+        next();
     }
 };

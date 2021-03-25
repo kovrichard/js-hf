@@ -1,4 +1,5 @@
 var renderMW = require('../middleware/generic/render');
+var redirectMW = require('../middleware/generic/redirect');
 var authMW = require('../middleware/auth/auth');
 var getUserMW = require('../middleware/user/getUser');
 var getUserMoviesMW = require('../middleware/user/getUserMovies');
@@ -22,12 +23,14 @@ module.exports = (app) => {
     app.post('/user/:userid/modify',
         authMW(objectRepository),
         getUserMW(objectRepository),
-        saveUserMW(objectRepository)
+        saveUserMW(objectRepository),
+        redirectMW(objectRepository, '/')
     );
 
     app.get('/user/:userid/delete',
         authMW(objectRepository),
         getUserMW(objectRepository),
-        deleteUserMW(objectRepository)
+        deleteUserMW(objectRepository),
+        redirectMW(objectRepository, '/login')
     );
 };

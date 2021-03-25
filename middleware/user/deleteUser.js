@@ -1,9 +1,9 @@
 /**
- * Delete user from database, then redirect to /login
+ * Delete user from database
  */
 module.exports = (objectRepository) => {
     return (req, res, next) => {
         console.log(`Deleting user ${res.locals.user.username}`);
-        res.redirect('/login');
+        next();
     }
 };

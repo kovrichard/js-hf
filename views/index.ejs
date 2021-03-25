@@ -62,11 +62,13 @@
                             <tbody>
                                 <% usermovies.forEach((movie) => { %>
                                     <tr>
-                                        <td scope="col">
+                                        <td scope="col" class="align-middle">
                                             <a href="movie/<%= movie.id %>"><%= movie.title %></a>
                                         </td>
                                         <td scope="col" class="text-center">
-                                            <a href><i class="fas fa-trash"></i></a>
+                                            <form method="POST" action="/movie/<%= movie.id %>/unrent">
+                                                <button class="btn btn-link" type="submit"><i class="fas fa-trash text-dark"></i></button>
+                                            </form>
                                         </td>
                                     </tr>
                                 <% }); %>                                
