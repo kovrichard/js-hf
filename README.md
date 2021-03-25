@@ -131,6 +131,32 @@ middlewares/generic
 
 #### GET, POST /password-reset
 - render password reset form or get user by any identifier, set new password, show it and redirect to login
-1. `getUser`
-2. `resetUserPassword`
+1. `getUserMW`
+2. `resetUserPasswordMW`
 3. `renderMW(password-reset.html)`
+
+## Homework #4
+
+### Notes
+
+- Additional endpoints created for rent and unrent
+
+### New endpoints
+
+#### GET /movie/:movieid/rent
+- save movie to user, decrement available movie count and redirect to /movie
+1. `authMW`
+2. `getUserMW`
+3. `getMovieMW`
+4. `rentMovieMW`
+5. `saveUserMW`
+6. `saveMovieMW`
+
+#### GET /movie/:movieid/unrent
+- remove movie from user, increment available movie count and redirect to /movie
+1. `authMW`
+2. `getUserMW`
+3. `getMovieMW`
+4. `unrentMovieMW`
+5. `saveUserMW`
+6. `saveMovieMW`
