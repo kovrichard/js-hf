@@ -19,6 +19,11 @@ require('./routes/auth')(app);
 require('./routes/user')(app);
 require('./routes/movie')(app);
 
+app.use((err, req, res, next) => {
+    res.end('There was an error...');
+    console.log(err);
+});
+
 var server = app.listen(3000, function () {
     console.log('On: 3000');
 });
