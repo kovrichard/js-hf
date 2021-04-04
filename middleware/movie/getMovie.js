@@ -1,29 +1,22 @@
 /**
  * Load movie by id from database
  */
+const requireOption = require('../generic/requireOption');
+
 module.exports = (objectRepository) => {
+    const MovieModel = requireOption(objectRepository, 'MovieModel');
+
     return (req, res, next) => {
         console.log("Getting movie...");
-        res.locals.movie = getMovieMock();
-        next();
+
+        MovieModel.findOne({_id: req.params.movieid},
+            (err, movie) => {
+            if (err || !movie) {
+                return next(err);
+            }
+
+            res.locals.movie = movie;
+            return next();
+        });
     }
 };
-
-// This will be deleted, once database is implemented
-function getMovieMock() {
-    return {
-        id: 1,
-        title: 'The Shawshank Redemption',
-        directedby: 'Frank Darabont',
-        year: 1994,
-        category: 'Drama',
-        cast: [
-            'Tim Robbins',
-            'Morgan Freeman',
-            'Bob Gunton',
-            'William Sadler'
-        ],
-        image: '/static/the_shawshank_redemption.jpg',
-        available: 3,
-    }
-}
