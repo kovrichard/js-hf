@@ -1,22 +1,24 @@
-var renderMW = require('../middleware/generic/render');
-var redirectMW = require('../middleware/generic/redirect');
-var authMW = require('../middleware/auth/auth');
-var getMovieMW = require('../middleware/movie/getMovie');
-var getMoviesMW = require('../middleware/movie/getMovies');
-var saveMovieMW = require('../middleware/movie/saveMovie');
-var deleteMovieMW = require('../middleware/movie/deleteMovie');
-var rentMovieMW = require('../middleware/movie/rentMovie');
-var unrentMovieMW = require('../middleware/movie/unrentMovie');
-var checkAdminMW = require('../middleware/auth/checkAdmin');
-var getUserMW = require('../middleware/user/getUser');
-var saveUserMW = require('../middleware/user/saveUser');
+const renderMW = require('../middleware/generic/render');
+const redirectMW = require('../middleware/generic/redirect');
+const authMW = require('../middleware/auth/auth');
+const getMovieMW = require('../middleware/movie/getMovie');
+const getMoviesMW = require('../middleware/movie/getMovies');
+const saveMovieMW = require('../middleware/movie/saveMovie');
+const deleteMovieMW = require('../middleware/movie/deleteMovie');
+const rentMovieMW = require('../middleware/movie/rentMovie');
+const unrentMovieMW = require('../middleware/movie/unrentMovie');
+const checkAdminMW = require('../middleware/auth/checkAdmin');
+const getUserMW = require('../middleware/user/getUser');
+const saveUserMW = require('../middleware/user/saveUser');
 const auth = require('../middleware/auth/auth');
 
-userModel = '';
+const UserModel = require('../models/user');
+const MovieModel = require('../models/movie');
 
 module.exports = (app) => {
-    var objectRepository = {
-        userModel: userModel
+    const objectRepository = {
+        UserModel: UserModel,
+        MovieModel: MovieModel,
     };
 
     app.get('/movie',

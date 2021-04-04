@@ -1,15 +1,17 @@
-var renderMW = require('../middleware/generic/render');
-var redirectMW = require('../middleware/generic/redirect');
-var checkPasswordMW = require('../middleware/auth/checkPassword');
-var getUserMW = require('../middleware/user/getUser');
-var saveUserMW = require('../middleware/user/saveUser');
-var resetUserPassword = require('../middleware/user/resetUserPassword');
+const renderMW = require('../middleware/generic/render');
+const redirectMW = require('../middleware/generic/redirect');
+const checkPasswordMW = require('../middleware/auth/checkPassword');
+const getUserMW = require('../middleware/user/getUser');
+const saveUserMW = require('../middleware/user/saveUser');
+const resetUserPassword = require('../middleware/user/resetUserPassword');
 
-userModel = '';
+const UserModel = require('../models/user');
+const MovieModel = require('../models/movie');
 
 module.exports = (app) => {
-    var objectRepository = {
-        userModel: userModel
+    const objectRepository = {
+        UserModel: UserModel,
+        MovieModel: MovieModel,
     };
 
     app.use('/login',
