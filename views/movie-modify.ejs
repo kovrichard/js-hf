@@ -10,7 +10,11 @@
 
         <main class="d-flex flex-column">
             <div class="container">
-                <form>
+                <% if (typeof movie !== 'undefined') { %>
+                    <form method="POST" action="/movie/<%= movie.id %>/modify">
+                <% } else { %>
+                    <form method="POST" action="/movie/new">
+                <% } %>
                     <div class="W-100 d-flex justify-content-center pb-5">
                         <div class="welcome-card rented-movies p-5 mt-5">
                             <div class="pb-3 text-center">
@@ -25,7 +29,7 @@
                                             Title
                                         </td>
                                         <td scope="col" class="text-left">
-                                            <input type="text" class="form-control" value="<%= typeof movie === 'undefined' ? '' : movie.title %>">
+                                            <input type="text" name="title" class="form-control" value="<%= typeof movie === 'undefined' ? '' : movie.title %>">
                                         </td>
                                     </tr>
                                     <tr>
@@ -33,7 +37,7 @@
                                             Directed by
                                         </td>
                                         <td scope="col" class="text-left">
-                                            <input type="text" class="form-control" value="<%= typeof movie === 'undefined' ? '' : movie.directedby %>">
+                                            <input type="text" name="directedby" class="form-control" value="<%= typeof movie === 'undefined' ? '' : movie.directedby %>">
                                         </td>
                                     </tr>
                                     <tr>
@@ -41,7 +45,7 @@
                                             Year
                                         </td>
                                         <td scope="col" class="text-left">
-                                            <input type="text" class="form-control" value="<%= typeof movie === 'undefined' ? '' : movie.year %>">
+                                            <input type="text" name="year" class="form-control" value="<%= typeof movie === 'undefined' ? '' : movie.year %>">
                                         </td>
                                     </tr>
                                     <tr>
@@ -49,7 +53,7 @@
                                             Category
                                         </td>
                                         <td scope="col" class="text-left">
-                                            <input type="text" class="form-control" value="<%= typeof movie === 'undefined' ? '' : movie.category %>">
+                                            <input type="text" name="category" class="form-control" value="<%= typeof movie === 'undefined' ? '' : movie.category %>">
                                         </td>
                                     </tr>
                                     <tr>
@@ -57,7 +61,7 @@
                                             Cast
                                         </td>
                                         <td scope="col" class="text-left">
-                                            <textarea class="form-control">
+                                            <textarea class="form-control" name="cast">
                                                 <%_ if (typeof movie !== 'undefined') { _%>
                                                     <%_ movie.cast.forEach((actor) => { _%><%= actor %>
                                                     <%_ }) _%>
@@ -70,7 +74,7 @@
                                             Available
                                         </td>
                                         <td scope="col" class="text-left">
-                                            <input type="text" class="form-control" value="<%= typeof movie === 'undefined' ? '' : movie.available %>">
+                                            <input type="text" name="available" class="form-control" value="<%= typeof movie === 'undefined' ? '' : movie.available %>">
                                         </td>
                                     </tr>
                                     <tr>
@@ -79,7 +83,7 @@
                                         </td>
                                         <td scope="col" class="text-left">
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="customFile" value="<%= typeof movie === 'undefined' ? '' : movie.image %>">
+                                                <input type="file" name="image" class="custom-file-input" id="customFile" value="<%= typeof movie === 'undefined' ? '' : movie.image %>">
                                                 <label class="custom-file-label" for="customFile">Choose file</label>
                                               </div>
                                         </td>
@@ -88,7 +92,7 @@
                             </table>
                             <div class="d-flex flex-row justify-content-around">
                                 <div class="text-center pt-3">
-                                    <a type="button" name="button" class="btn login_btn w-100" href="/movie">Save</a>
+                                    <button type="submit" name="button" class="btn login_btn w-100">Save</a>
                                 </div>
                                 <div class="text-center pt-3">
                                     <% if (typeof movie !== 'undefined') { %>

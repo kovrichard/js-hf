@@ -61,7 +61,6 @@ module.exports = (app) => {
         getUserMW(objectRepository),
         getMovieMW(objectRepository),
         rentMovieMW(objectRepository),
-        saveMovieMW(objectRepository),
         saveUserMW(objectRepository),
         redirectMW(objectRepository, '/')
     );
@@ -71,7 +70,6 @@ module.exports = (app) => {
         getUserMW(objectRepository),
         getMovieMW(objectRepository),
         unrentMovieMW(objectRepository),
-        saveMovieMW(objectRepository),
         saveUserMW(objectRepository),
         redirectMW(objectRepository, '/')
     );

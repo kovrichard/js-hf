@@ -3,9 +3,43 @@
  * If res.locals has something, use this instead (modify)
  * If both are empty, call next() (we are in a GET request)
  */
+const requireOption = require('../generic/requireOption');
+
 module.exports = (objectRepository) => {
+    const MovieModel = requireOption(objectRepository, 'MovieModel');
+
     return (req, res, next) => {
-        console.log("Saving movie...");
-        next();
+        if (req.method == 'GET') {
+            console.log("GET request detected, calling next()...");
+            return next();
+        }
+
+        if (typeof res.locals.movie === 'undefined') {
+            console.log("Creating movie...");
+            res.locals.movie = new MovieModel();
+        } else {
+            console.log("Updating movie...");
+        }
+        
+        res.locals.movie.title = req.body.title;
+        res.locals.movie.directedby = req.body.directedby;
+        res.locals.movie.year = req.body.year;
+        res.locals.movie.category = req.body.category;
+        res.locals.movie.cast = parseCast(req.body.cast);
+        res.locals.movie.available = req.body.available;
+        res.locals.movie.image = req.body.image;
+
+        res.locals.movie.save((err) => {
+            if (err) {
+                return next(err);
+            }
+            res.redirect('/movie');
+        });
     }
 };
+
+function parseCast(cast) {
+    let tmp = cast.split(/[,\r\n]/);
+    tmp = tmp.filter(actor => actor != '');
+    return tmp;
+}
