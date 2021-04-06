@@ -1,4 +1,5 @@
 const express = require('express');
+const session = require('express-session');
 const cookieParser = require("cookie-parser");
 
 const app = express();
@@ -11,11 +12,12 @@ app.use(cookieParser());
 
 app.use('/static', express.static('static'));
 
-// app.use(session({
-//     secret: 'random-long-secret',
-//     resave: false,
-//     saveUninitialized: true
-// }));
+app.use(session({
+    secret: 'my-long-homework-secret',
+    // resave: false,
+    // saveUninitialized: true,
+    // cookie: { secure: true }
+}));
 
 require('./routes/auth')(app);
 require('./routes/user')(app);
