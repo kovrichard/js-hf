@@ -26,11 +26,8 @@ module.exports = (objectRepository) => {
                     console.log("Password is wrong");
                     res.redirect('/login');
                 } else {
-                    console.log('Username and password OK, logging in...');
-                    res.cookie('userid', user._id.toString(), { maxAge: 24 * 60 * 60 * 1000 });
-                    // req.session.loggedin = true;
-                    // return req.session.save((err) => {
-                    // return res.redirect('/');
+                    res.locals.user = user;
+                    console.log('Username and password OK')
                     return next();
                 }
             });
