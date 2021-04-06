@@ -15,9 +15,14 @@ module.exports = (app) => {
         MovieModel: MovieModel,
     };
 
-    app.use('/login',
-        checkPasswordMW(objectRepository),
+    app.get('/login',
         renderMW(objectRepository, 'login'),
+    );
+
+    app.post('/login',
+        getUserMW(objectRepository),
+        checkPasswordMW(objectRepository),
+        redirectMW(objectRepository, '/'),
     );
 
     app.get('/register',
