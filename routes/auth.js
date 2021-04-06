@@ -26,7 +26,7 @@ module.exports = (app) => {
 
     app.post('/register',
         saveUserMW(objectRepository),
-        redirectMW(objectRepository, '/')
+        redirectMW(objectRepository, '/login'),
     );
 
     app.get('/password-reset',
