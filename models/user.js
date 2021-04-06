@@ -6,6 +6,10 @@ const User = db.model('User', {
     name: String,
     email: String,
     password: String,
+    _movies: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Movie',
+    }]
 });
 
 module.exports = User;
