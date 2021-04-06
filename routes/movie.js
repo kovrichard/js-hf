@@ -69,7 +69,6 @@ module.exports = (app) => {
         getUserMW(objectRepository),
         getMovieMW(objectRepository),
         unrentMovieMW(objectRepository),
-        saveUserMW(objectRepository),
         redirectMW(objectRepository, '/')
     );
 };
