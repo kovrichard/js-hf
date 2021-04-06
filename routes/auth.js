@@ -4,6 +4,7 @@ const checkPasswordMW = require('../middleware/auth/checkPassword');
 const getUserMW = require('../middleware/user/getUser');
 const saveUserMW = require('../middleware/user/saveUser');
 const resetUserPassword = require('../middleware/user/resetUserPassword');
+const logoutMW = require('../middleware/auth/logout');
 
 const UserModel = require('../models/user');
 const MovieModel = require('../models/movie');
@@ -36,5 +37,10 @@ module.exports = (app) => {
         getUserMW(objectRepository),
         resetUserPassword(objectRepository),
         redirectMW(objectRepository, '/login')
+    );
+
+    app.get('/logout',
+        logoutMW(objectRepository),
+        redirectMW(objectRepository, '/login'),
     );
 };
