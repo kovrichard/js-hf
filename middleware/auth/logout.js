@@ -7,5 +7,6 @@
         // req.session.destroy((err) => {
         //     return res.redirect('/login');
         // });
+        return next();
     };
 };
