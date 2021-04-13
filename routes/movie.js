@@ -9,8 +9,17 @@ const rentMovieMW = require('../middleware/movie/rentMovie');
 const unrentMovieMW = require('../middleware/movie/unrentMovie');
 const checkAdminMW = require('../middleware/auth/checkAdmin');
 const getUserMW = require('../middleware/user/getUser');
-const saveUserMW = require('../middleware/user/saveUser');
-const auth = require('../middleware/auth/auth');
+
+const multer = require('multer');
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'static/')
+    },
+    filename: (req, file, cb) => {
+        cb(null, `${file.fieldname}-${Date.now()}.${ext(file.originalname)}`)
+    }
+})
+const upload = multer({ storage: storage });
 
 const UserModel = require('../models/user');
 const MovieModel = require('../models/movie');
@@ -40,7 +49,7 @@ module.exports = (app) => {
         renderMW(objectRepository, 'movie'),
     );
 
-    app.use('/movie/:movieid/modify',
+    app.use('/movie/:movieid/modify', upload.single('image'),
         authMW(objectRepository),
         checkAdminMW(objectRepository),
         getMovieMW(objectRepository),
@@ -72,3 +81,8 @@ module.exports = (app) => {
         redirectMW(objectRepository, '/')
     );
 };
+
+
+function ext(filename) {
+    return filename.split('.').pop();
+}

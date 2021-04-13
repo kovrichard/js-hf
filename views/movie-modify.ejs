@@ -11,9 +11,9 @@
         <main class="d-flex flex-column">
             <div class="container">
                 <% if (typeof movie !== 'undefined') { %>
-                    <form method="POST" action="/movie/<%= movie.id %>/modify">
+                    <form method="POST" action="/movie/<%= movie.id %>/modify" enctype="multipart/form-data">
                 <% } else { %>
-                    <form method="POST" action="/movie/new">
+                    <form method="POST" action="/movie/new" enctype="multipart/form-data">
                 <% } %>
                     <div class="W-100 d-flex justify-content-center pb-5">
                         <div class="welcome-card rented-movies p-5 mt-5">
@@ -61,12 +61,7 @@
                                             Cast
                                         </td>
                                         <td scope="col" class="text-left">
-                                            <textarea class="form-control" name="cast">
-                                                <%_ if (typeof movie !== 'undefined') { _%>
-                                                    <%_ movie.cast.forEach((actor) => { _%><%= actor %>
-                                                    <%_ }) _%>
-                                                <%_ } _%>
-                                            </textarea>
+                                            <input type="text" name="cast" class="form-control" value="<%= typeof movie === 'undefined' ? '' : movie.cast %>">
                                         </td>
                                     </tr>
                                     <tr>
@@ -83,7 +78,7 @@
                                         </td>
                                         <td scope="col" class="text-left">
                                             <div class="custom-file">
-                                                <input type="file" name="image" class="custom-file-input" id="customFile" value="<%= typeof movie === 'undefined' ? '' : movie.image %>">
+                                                <input type="file" name="image" class="custom-file-input" id="customFile">
                                                 <label class="custom-file-label" for="customFile">Choose file</label>
                                               </div>
                                         </td>

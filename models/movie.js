@@ -8,7 +8,7 @@ const Movie = db.model('Movie', {
     category: String,
     cast: Array,
     available: Number,
-    // image: File,
+    image: String,
 });
 
 module.exports = Movie;

@@ -27,7 +27,9 @@ module.exports = (objectRepository) => {
         res.locals.movie.category = req.body.category;
         res.locals.movie.cast = parseCast(req.body.cast);
         res.locals.movie.available = req.body.available;
-        res.locals.movie.image = req.body.image;
+        if (typeof req.file !== 'undefined') {
+            res.locals.movie.image = `/${req.file.path}`;
+        }
 
         res.locals.movie.save((err) => {
             if (err) {
