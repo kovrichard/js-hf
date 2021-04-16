@@ -27,7 +27,14 @@ module.exports = (objectRepository) => {
                         res.locals.user.name = req.body.name;
                         res.locals.user.username = req.body.username;
                         res.locals.user.email = req.body.email;
+                        console.log(req.body.password);
+                        console.log(req.body.passwor2);
+                        if (req.body.password != req.body.password2) {
+                            console.log('The two passwords must match.')
+                            return res.render('register', res.locals);
+                        }
                         res.locals.user.password = req.body.password;
+                        res.locals.user.isadmin = false;
                         res.locals.user.save((saveErr) => {
                             if (saveErr) {
                                 return next(saveErr);

@@ -20,19 +20,19 @@
                                 <div class="input-group-append">
                                     <span class="input-group-text w-40"><i class="fas fa-user"></i></span>
                                 </div>
-                                <input type="text" name="name" class="form-control input_user" value="" placeholder="name" required>
+                                <input type="text" name="name" class="form-control input_user" value="<%= typeof user === 'undefined' ? '' : user.name %>" placeholder="name" required>
                             </div>
                             <div class="input-group mb-3">
                                 <div class="input-group-append">
                                     <span class="input-group-text w-40"><i class="fas fa-user"></i></span>
                                 </div>
-                                <input type="text" name="username" class="form-control input_user" value="" placeholder="username" required>
+                                <input type="text" name="username" class="form-control input_user" value="<%= typeof user === 'undefined' ? '' : user.username %>" placeholder="username" required>
                             </div>
                             <div class="input-group mb-3">
                                 <div class="input-group-append">
                                     <span class="input-group-text w-40"><i class="fas fa-envelope"></i></span>
                                 </div>
-                                <input type="text" name="email" class="form-control input_user" value="" placeholder="email" required>
+                                <input type="text" name="email" class="form-control input_user" value="<%= typeof user === 'undefined' ? '' : user.email %>" placeholder="email" required>
                             </div>
                             <div class="input-group mb-3">
                                 <div class="input-group-append">
