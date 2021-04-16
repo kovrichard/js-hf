@@ -14,7 +14,7 @@ module.exports = (objectRepository) => {
         } else if (typeof req.body.email !== 'undefined' && req.body.email !== '') {
             return getUserByKey(res, next, UserModel, 'email', req.body.email);
         } else {
-            return getUserByKey(res.next, UserModel, '_id', req.params.userid);
+            return getUserByKey(res, next, UserModel, '_id', req.params.userid);
         }
     }
 };

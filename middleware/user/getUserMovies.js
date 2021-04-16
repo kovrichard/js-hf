@@ -22,17 +22,3 @@ module.exports = (objectRepository) => {
         });
     }
 };
-
-// This will be deleted, once database is implemented
-function userMoviesMock() {
-    return [
-        {
-            id: 2,
-            title: 'Avengers',
-        },
-        {
-            id: 1,
-            title: 'The Shawshank Redemption',
-        }
-    ]
-}
