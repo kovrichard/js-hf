@@ -6,6 +6,7 @@ const User = db.model('User', {
     name: String,
     email: String,
     password: String,
+    isadmin: Boolean,
     _movies: [{
         type: Schema.Types.ObjectId,
         ref: 'Movie',

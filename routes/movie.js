@@ -38,6 +38,7 @@ module.exports = (app) => {
 
     app.use('/movie/new',
         authMW(objectRepository),
+        getUserMW(objectRepository),
         checkAdminMW(objectRepository),
         saveMovieMW(objectRepository),
         renderMW(objectRepository, 'movie-modify'),
@@ -51,6 +52,7 @@ module.exports = (app) => {
 
     app.use('/movie/:movieid/modify', upload.single('image'),
         authMW(objectRepository),
+        getUserMW(objectRepository),
         checkAdminMW(objectRepository),
         getMovieMW(objectRepository),
         saveMovieMW(objectRepository),
@@ -59,6 +61,7 @@ module.exports = (app) => {
 
     app.get('/movie/:movieid/delete',
         authMW(objectRepository),
+        getUserMW(objectRepository),
         checkAdminMW(objectRepository),
         getMovieMW(objectRepository),
         deleteMovieMW(objectRepository),
