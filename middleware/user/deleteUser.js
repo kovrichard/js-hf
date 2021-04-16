@@ -12,8 +12,7 @@ module.exports = (objectRepository) => {
             if (err) {
                 return next(err);
             }
+            return next();
         });
-
-        return next();
     }
 };
