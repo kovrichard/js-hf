@@ -15,6 +15,9 @@ module.exports = (objectRepository) => {
         if (typeof req.cookies === 'undefined' && typeof req.cookies['userid'] === 'undefined') {
             if (typeof req.session !== 'undefined' && req.sesion.loggedin) {
                 req.session.destroy((err) => {
+                    if (err) {
+                        return next(err);
+                    }
                     return res.redirect('/login');
                 });
             }
