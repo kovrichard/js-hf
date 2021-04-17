@@ -63,9 +63,11 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="text-center pt-3">
-                            <a type="button" class="btn login_btn" href="/movie/new">New</a>
-                        </div>
+                        <% if (typeof user !== 'undefined' && user.isadmin)  { %>
+                            <div class="text-center pt-3">
+                                <a type="button" class="btn login_btn" href="/movie/new">New</a>
+                            </div>
+                        <% } %>
                     </div>
                 </div>
             </div>

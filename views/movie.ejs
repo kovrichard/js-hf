@@ -76,9 +76,11 @@
                                     <button type="submit" class="btn login_btn">Rent</button>
                                 </form>
                             </div>
-                            <div class="text-center pt-3">
-                                <a type="button" class="btn login_btn" href="/movie/<%= movie.id %>/modify">Modify</a>
-                            </div>
+                            <% if (typeof user !== 'undefined' && user.isadmin)  { %>
+                                <div class="text-center pt-3">
+                                    <a type="button" class="btn login_btn" href="/movie/<%= movie.id %>/modify">Modify</a>
+                                </div>
+                            <% } %>
                         </div>
                     </div>
                 </div>

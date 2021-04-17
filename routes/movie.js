@@ -32,6 +32,7 @@ module.exports = (app) => {
 
     app.get('/movie',
         authMW(objectRepository),
+        getUserMW(objectRepository),
         getMoviesMW(objectRepository),
         renderMW(objectRepository, 'movies'),
     );
@@ -46,6 +47,7 @@ module.exports = (app) => {
 
     app.get('/movie/:movieid',
         authMW(objectRepository),
+        getUserMW(objectRepository),
         getMovieMW(objectRepository),
         renderMW(objectRepository, 'movie'),
     );
