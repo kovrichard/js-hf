@@ -37,7 +37,7 @@ module.exports = (app) => {
         renderMW(objectRepository, 'movies'),
     );
 
-    app.use('/movie/new',
+    app.use('/movie/new', upload.single('image'),
         authMW(objectRepository),
         getUserMW(objectRepository),
         checkAdminMW(objectRepository),
