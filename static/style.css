@@ -89,3 +89,7 @@ ul {
     padding: 0;
     margin: 0;
 }
+
+.non-visible {
+    display: none;
+}
