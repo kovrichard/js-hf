@@ -20,13 +20,23 @@ module.exports = (objectRepository) => {
         } else {
             console.log("Updating movie...");
         }
-        
+
         res.locals.movie.title = req.body.title;
         res.locals.movie.directedby = req.body.directedby;
         res.locals.movie.year = req.body.year;
         res.locals.movie.category = req.body.category;
         res.locals.movie.cast = parseCast(req.body.cast);
         res.locals.movie.available = req.body.available;
+        
+        if (emptyFields(req)) {
+            return res.render('movie-modify', res.locals);
+        }
+        
+        if (isNaN(req.body.year) || isNaN(req.body.available)) {
+            console.log("Non-number character was inserted into number field");
+            return res.render('movie-modify', res.locals);
+        }
+
         if (typeof req.file !== 'undefined') {
             res.locals.movie.image = `/${req.file.path}`;
         }
@@ -44,4 +54,17 @@ function parseCast(cast) {
     let tmp = cast.split(/[,\r\n]/);
     tmp = tmp.filter(actor => actor != '');
     return tmp;
+}
+
+function emptyFields(req) {
+    if (req.body.title === "") {
+        console.log("Title is required");
+        return true;
+    }
+
+    if (req.body.available === "") {
+        console.log("Number of available copies required");
+        return true;
+    }
+    return false;
 }
