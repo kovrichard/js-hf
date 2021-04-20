@@ -24,11 +24,21 @@ module.exports = (objectRepository) => {
                         console.log('Username already in use');
                         return res.redirect('/register');
                     } else {
+                        if (
+                            typeof req.body.name === 'undefined' ||
+                            typeof req.body.username === 'undefined' ||
+                            typeof req.body.email === 'undefined' ||
+                            typeof req.body.password === 'undefined' ||
+                            typeof req.body.password2 === 'undefined'
+                        ) {
+                            console.log('Some field was not filled');
+                            return res.redirect('/register');
+                        }
+
+
                         res.locals.user.name = req.body.name;
                         res.locals.user.username = req.body.username;
                         res.locals.user.email = req.body.email;
-                        console.log(req.body.password);
-                        console.log(req.body.passwor2);
                         if (req.body.password != req.body.password2) {
                             console.log('The two passwords must match.')
                             return res.render('register', res.locals);
