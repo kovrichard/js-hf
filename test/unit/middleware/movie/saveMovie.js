@@ -273,7 +273,7 @@ describe('saveMovie middleware ', () => {
             MovieModel: MovieMockModel
         });
 
-        var movieMock = {};
+        var movieMock = undefined;
 
         mw(
             {
@@ -291,7 +291,7 @@ describe('saveMovie middleware ', () => {
                     movie: movieMock
                 },
                 render: (what, locals) => {
-                    expect(movieMock.cast).to.be.eql(['First', 'Second', 'Third']);
+                    expect(locals.movie).to.not.be.eql(undefined);
                     done();
                 }
             }
