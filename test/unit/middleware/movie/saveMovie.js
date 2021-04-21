@@ -266,5 +266,61 @@ describe('saveMovie middleware ', () => {
         );
     });
 
-    
+    it('should create moviemodel if not defined', (done) => {
+        class MovieMockModel {}
+
+        const mw = saveMovieMW({
+            MovieModel: MovieMockModel
+        });
+
+        var movieMock = {};
+
+        mw(
+            {
+                body: {
+                    title: '',
+                    directedby: 'Director',
+                    year: 2001,
+                    category: 'Drama',
+                    cast: 'First,Second,Third',
+                    available: 4
+                }
+            },
+            {
+                locals: {
+                    movie: movieMock
+                },
+                render: (what, locals) => {
+                    expect(movieMock.cast).to.be.eql(['First', 'Second', 'Third']);
+                    done();
+                }
+            }
+        );
+    });
+
+    it('should call next on get request', (done) => {
+
+        const mw = saveMovieMW({
+            MovieModel: {}
+        });
+
+        mw(
+            {
+                method: 'GET',
+                body: {
+                    title: '',
+                    directedby: 'Director',
+                    year: 2001,
+                    category: 'Drama',
+                    cast: 'First,Second,Third',
+                    available: 4
+                }
+            },
+            {},
+            (err) => {
+                expect(err).to.be.eql(undefined);
+                done();
+            }
+        );
+    });
 });
