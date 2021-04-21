@@ -170,3 +170,13 @@ middlewares/generic
 4. `unrentMovieMW`
 5. `saveUserMW`
 6. `saveMovieMW`
+
+## Homework #6
+
+By default, every user is created as a regular user, by setting the `isadmin` flag to false at registration.
+
+It is set server side, so no client interaction can fake it. To create an admin user, set the flag for the desired user to true in the database.
+
+Movie creation, modification and removal can only be done by admin users.
+
+The images to movies are stored on the disk, the database stores the location of the image only.
