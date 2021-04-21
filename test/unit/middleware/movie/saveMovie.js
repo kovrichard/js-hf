@@ -71,4 +71,46 @@ describe('saveMovie middleware ', () => {
             }
         );
     });
+
+    it('should save image path to movie on image upload', (done) => {
+        const mw = saveMovieMW({
+            MovieModel: 'movie'
+        });
+
+        var movieMock = {
+            save: (cb) => {
+                cb(null);
+            },
+        }
+
+        mw(
+            {
+                body: {
+                    title: 'Movie 1',
+                    directedby: 'Director',
+                    year: 2001,
+                    category: 'Drama',
+                    cast: 'First,Second,Third',
+                    available: 4
+                },
+                file: {
+                    path: 'static/testimage.jpg'
+                }
+            },
+            {
+                locals: {
+                    movie: movieMock
+                },
+                redirect: (where) => {
+                    expect(movieMock.image).to.be.eql('/static/testimage.jpg');
+                    done();
+                }
+            },
+            (err) => {
+                // code does not call next
+            }
+        );
+    });
+
+    
 });
