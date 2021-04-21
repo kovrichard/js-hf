@@ -16,9 +16,6 @@ describe('saveMovie middleware ', () => {
                     category: 'Drama',
                     cast: 'First,Second,Third',
                     available: 4
-                },
-                params: {
-                    movieid: 42
                 }
             },
             {
@@ -54,9 +51,6 @@ describe('saveMovie middleware ', () => {
                     category: 'Drama',
                     cast: 'First,Second,Third',
                     available: 4
-                },
-                params: {
-                    movieid: 42
                 }
             },
             {
