@@ -30,9 +30,6 @@ describe('saveMovie middleware ', () => {
                     expect(where).to.be.eql('/movie');
                     done();
                 }
-            },
-            (err) => {
-                // code does not call next
             }
         );
     });
@@ -60,9 +57,6 @@ describe('saveMovie middleware ', () => {
                             cb('dberror');
                         }
                     }
-                },
-                redirect: (where) => {
-                    // code does not reach this part
                 }
             },
             (err) => {
@@ -80,7 +74,7 @@ describe('saveMovie middleware ', () => {
         var movieMock = {
             save: (cb) => {
                 cb(null);
-            },
+            }
         }
 
         mw(
